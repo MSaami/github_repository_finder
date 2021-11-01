@@ -13,3 +13,8 @@
  *= require_tree .
  *= require_self
  */
+.minimize-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis
+}
