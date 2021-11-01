@@ -2,3 +2,9 @@
     <%= form.text_field :q, class: 'form-control', value: params[:q] %>
     <%= form.submit "Search", class: 'search-btn btn btn-primary', name: nil %>
 <% end %>
+
+<div class="row">
+    <% @repositories.each do |repository| %>
+        <%= render partial: "repository", locals: { repository: repository } %>
+    <% end %>
+</div>
