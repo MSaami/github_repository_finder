@@ -1,9 +1,15 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe RepositoryFinder do
-  let(:repository1) {double(:repository, full_name: 'rails', stargazers_count: 45, description: 'test', html_url: 'http://test.com')}
-  let(:repository2) {double(:repository, full_name: 'vim-rails', stargazers_count: 50, description: 'test', html_url: 'http://test.com')}
-  let(:octokit_mock) { double(:client, search_repositories: double(:response, items: [repository1, repository2]))}
+  let(:repository1) do
+    double(:repository, full_name: 'rails', stargazers_count: 45, description: 'test', html_url: 'http://test.com')
+  end
+  let(:repository2) do
+    double(:repository, full_name: 'vim-rails', stargazers_count: 50, description: 'test', html_url: 'http://test.com')
+  end
+  let(:octokit_mock) { double(:client, search_repositories: double(:response, items: [repository1, repository2])) }
 
   before do
     allow(Octokit::Client).to receive(:new).and_return(octokit_mock)

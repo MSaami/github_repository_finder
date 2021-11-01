@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe "Search through github repositories", type: :system do
@@ -5,8 +7,11 @@ RSpec.describe "Search through github repositories", type: :system do
     driven_by(:rack_test)
   end
 
-  let(:repository) {double(:repository, full_name: "vim-rails", description: "test description", stargazers_count: 43, html_url: "http://test.com")}
-  let(:octokit_response_mock) { double(:response, items: [repository])}
+  let(:repository) do
+    double(:repository, full_name: "vim-rails", description: "test description", stargazers_count: 43,
+    html_url: "http://test.com")
+  end
+  let(:octokit_response_mock) { double(:response, items: [repository]) }
 
   before do
     allow_any_instance_of(Octokit::Client).to receive(:search_repositories).and_return(octokit_response_mock)

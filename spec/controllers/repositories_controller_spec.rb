@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe RepositoriesController, type: :controller do
@@ -9,7 +11,7 @@ RSpec.describe RepositoriesController, type: :controller do
 
   context "response with correct params" do
     it "returns success response" do
-      get :index, params: {q: 'Rails'}
+      get :index, params: { q: 'Rails' }
       expect(response).to have_http_status(:ok)
     end
   end
@@ -21,7 +23,7 @@ RSpec.describe RepositoriesController, type: :controller do
     end
 
     it "returns success response when params is empty string" do
-      get :index, params: {q: '   '}
+      get :index, params: { q: '   ' }
       expect(response).to have_http_status(:ok)
     end
   end
