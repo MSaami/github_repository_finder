@@ -9,6 +9,7 @@ class RepositoryFinder
   end
 
   def search(query)
+    return [] if query.blank?
     items = @client.search_repositories(query, per_page: PER_PAGE).items
     map_items(items)
   end

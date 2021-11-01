@@ -17,4 +17,16 @@ RSpec.describe RepositoryFinder do
       expect(repository_finder.last.name).to eq('vim-rails')
     end
   end
+
+  context "empty result" do
+    it "returns empty array when query is nil" do
+      repository_finder = described_class.call(nil)
+      expect(repository_finder.count).to eq(0)
+    end
+
+    it "returns empty array when query is empty string" do
+      repository_finder = described_class.call('  ')
+      expect(repository_finder.count).to eq(0)
+    end
+  end
 end
